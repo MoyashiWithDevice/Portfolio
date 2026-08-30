@@ -107,14 +107,7 @@
         <h2 class="sec-title">SKILLS<span class="blink">_</span></h2>
         <div class="sec-line"></div>
       </div>
-      <div class="skills-grid">
-        <div class="skill-card"><div class="skill-top"><span class="skill-icon">🌐</span><span class="skill-name">Network</span><span class="skill-pct">90%</span></div><div class="skill-bar"><div class="skill-fill" data-w="90"></div></div></div>
-        <div class="skill-card"><div class="skill-top"><span class="skill-icon">🐧</span><span class="skill-name">Linux</span><span class="skill-pct">70%</span></div><div class="skill-bar"><div class="skill-fill" data-w="70"></div></div></div>
-        <div class="skill-card"><div class="skill-top"><span class="skill-icon">🔒</span><span class="skill-name">Security</span><span class="skill-pct">50%</span></div><div class="skill-bar"><div class="skill-fill" data-w="50"></div></div></div>
-        <div class="skill-card"><div class="skill-top"><span class="skill-icon">🐍</span><span class="skill-name">Python</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class="skill-fill" data-w="65"></div></div></div>
-        <div class="skill-card"><div class="skill-top"><span class="skill-icon">🐹</span><span class="skill-name">Go</span><span class="skill-pct">45%</span></div><div class="skill-bar"><div class="skill-fill" data-w="45"></div></div></div>
-        <div class="skill-card"><div class="skill-top"><span class="skill-icon">🐙</span><span class="skill-name">Git</span><span class="skill-pct">65%</span></div><div class="skill-bar"><div class=" skill-fill" data-w="65"></div></div></div>
-      </div>
+      <div class="skills-grid" id="skillsGrid"></div>
     </section>
 
     <!-- TIMELINE -->
@@ -125,114 +118,13 @@
         <div class="sec-line"></div>
       </div>
       <div class="timeline-hint"><span class="hint-arrow">◀</span> ドラッグ・スクロールで時系列を確認 <span class="hint-arrow">▶</span></div>
-      <div class="timeline-outer" id="timelineOuter">
-        <div class="timeline-track" style="width:3100px">
- 
-          <!-- 年マーカー -->
-          <div class="year-marker" style="--x:60px"><div class="year-label">2024</div><div class="year-vline"></div></div>
-          <div class="year-marker" style="--x:1060px"><div class="year-label">2025</div><div class="year-vline"></div></div>
-          <div class="year-marker" style="--x:2260px"><div class="year-label">2026</div><div class="year-vline"></div></div>
-          <div class="tl-hline"></div>
- 
-          <!-- 1: 2024.04 入学 → top -->
-          <div class="tl-item top" style="--x:80px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge school">SCHOOL</span><span class="tl-date">2024.04</span></div><div class="tl-card-title">専門学校 入学</div><div class="tl-card-desc">情報システム科でプログラミングの基礎を学び始める。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 2: 2024.05 基本情報 → bottom -->
-          <div class="tl-item bottom" style="--x:280px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">2024.05</span></div><div class="tl-card-title">基本情報 合格</div><div class="tl-card-desc">IT基礎知識を体系的に習得。</div></div>
-          </div>
- 
-          <!-- 3: 2024.08 高校生ICT Conference → top -->
-          <div class="tl-item top" style="--x:480px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge event">EVENT</span><span class="tl-date">2024.08</span></div><div class="tl-card-title">高校生ICT Conference 参加</div><div class="tl-card-desc">ファシリテーターとして参加。現在の高校生達の考えを学ぶ。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 4: 2024.10 応用情報 → bottom -->
-          <div class="tl-item bottom" style="--x:680px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">2024.10</span></div><div class="tl-card-title">応用情報 合格</div><div class="tl-card-desc">IT応用知識を体系的に習得。</div></div>
-          </div>
- 
-          <!-- 5: 2024.12 MBSD CC 全国6位 → top -->
-          <div class="tl-item top" style="--x:880px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge contest">CONTEST</span><span class="tl-date">2024.12</span></div><div class="tl-card-title">MBSD CC 全国6位</div><div class="tl-card-desc">人的脅威を認識し、対処する方法を学ぶ。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 6: 2025.04 ネスぺ → bottom -->
-          <div class="tl-item bottom" style="--x:1080px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">2025.04</span></div><div class="tl-card-title">ネットワークスペシャリスト 合格</div><div class="tl-card-desc">ネットワーク設計・構築の知識、仕組みを体系的に習得。</div></div>
-          </div>
- 
-          <!-- 7: 2025.08 高校生ICT Conference → top -->
-          <div class="tl-item top" style="--x:1280px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge event">EVENT</span><span class="tl-date">2025.08</span></div><div class="tl-card-title">高校生ICT Conference 参加</div><div class="tl-card-desc">ファシリテーターとして参加。現在の高校生達の考えを学ぶ。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 8: 2025.09 U22 → bottom -->
-          <div class="tl-item bottom" style="--x:1480px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge contest">CONTEST</span><span class="tl-date">2025.09</span></div><div class="tl-card-title">U22プログラミングコンテスト 参加</div><div class="tl-card-desc">初めてのグループ開発で、プロトコル実装を学ぶ。</div></div>
-          </div>
- 
-          <!-- 9: 2025.10 SC → top -->
-          <div class="tl-item top" style="--x:1680px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">2025.10</span></div><div class="tl-card-title">情報処理安全確保支援士 合格</div><div class="tl-card-desc">セキュリティ管理の知識、仕組みを体系的に習得。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 10: 2025.11 新潟デジコン → bottom -->
-          <div class="tl-item bottom" style="--x:1880px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge contest">CONTEST</span><span class="tl-date">2025.11</span></div><div class="tl-card-title">新潟デジコン グランプリ受賞</div><div class="tl-card-desc">プロトコル実装の経験を活かし、テクノロジー部門でグランプリを受賞。</div></div>
-          </div>
- 
-          <!-- 11: 2025.12 MBSD CC 全国2位 → top -->
-          <div class="tl-item top" style="--x:2080px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge contest">CONTEST</span><span class="tl-date">2025.12</span></div><div class="tl-card-title">MBSD CC 全国2位</div><div class="tl-card-desc">前年度の経験を活かし、脆弱性調査と報告について学ぶ。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 12: 2026.01 LPIC → bottom -->
-          <div class="tl-item bottom" style="--x:2280px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">2026.01</span></div><div class="tl-card-title">LPIC level1 合格</div><div class="tl-card-desc">Linuxシステム管理の基礎知識を体系的に習得。</div></div>
-          </div>
- 
-          <!-- 13: 2026.03 みちびき → top -->
-          <div class="tl-item top" style="--x:2480px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge event">EVENT</span><span class="tl-date">2026.03</span></div><div class="tl-card-title">「みちびき」実証実験に参加</div><div class="tl-card-desc">「みちびき」の衛星通信による災害通報を活用したアプリの開発に参加。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <!-- 14: 2026.03 セキュリティキャンプ → bottom -->
-          <div class="tl-item bottom" style="--x:2680px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge event">EVENT</span><span class="tl-date">2026.03</span></div><div class="tl-card-title">セキュリティ・キャンプ コネクト参加</div><div class="tl-card-desc">セキュリティの知識とスキルを深め、全国のハイレベルな技術者達から刺激を受ける。</div></div>
-          </div>
-
-          <div class="tl-item top" style="--x:2880px">
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">-now</span></div><div class="tl-card-title">TOEICを学習</div><div class="tl-card-desc">幼少期から持つ世界旅行の夢の実現と就職の幅を広げるため、まずは7月に700点を目標に学習を進めています。</div></div>
-            <div class="tl-connector"></div><div class="tl-dot"><div class="tl-dot-core"></div></div>
-          </div>
- 
-          <div class="tl-item bottom" style="--x:3080px">
-            <div class="tl-dot"><div class="tl-dot-core"></div></div><div class="tl-connector"></div>
-            <div class="tl-card"><div class="tl-card-meta"><span class="tl-badge cert">CERT</span><span class="tl-date">-now</span></div><div class="tl-card-title">CCNPを学習</div><div class="tl-card-desc">今夏の受験を目標とし、CMLを活用して実際の構築を学んでいます。</div></div>
-          </div>
- 
-          <!-- NOW -->
-          <div class="tl-now" style="--x:3320px"><div class="tl-now-label">NOW</div><div class="tl-now-line"></div></div>
- 
+      <div class="timeline-shell">
+        <div class="timeline-outer" id="timelineOuter">
+          <div class="timeline-track" id="timelineTrack"></div>
         </div>
         <div class="tl-scrollbar"><div class="tl-scrollbar-track"><div class="tl-scrollbar-thumb" id="tlThumb"></div></div></div>
+        <div class="tl-edge tl-edge-left" id="tlEdgeLeft"><span>◀</span></div>
+        <div class="tl-edge tl-edge-right" id="tlEdgeRight"><span>▶</span></div>
       </div>
     </section>
 
@@ -252,7 +144,7 @@
           <div class="terminal-body">
             <div class="t-line-plain"><span class="t-prompt">$</span> cat contact_info.txt</div>
             <div class="t-output">
-              <div class="c-item"><span class="c-key">EMAIL  </span><span class="c-sep">→</span><a class="c-val" href="kss-24180133@nsgcl.jp">kss-24180133@nsgcl.jp</a></div>
+              <div class="c-item"><span class="c-key">EMAIL  </span><span class="c-sep">→</span><a class="c-val" href="https://x.com/moyashi_device">@moyashi_device</a></div>
               <div class="c-item"><span class="c-key">GITHUB </span><span class="c-sep">→</span><a class="c-val" href="https://github.com/MoyashiWithDevice" target="_blank">github.com/MoyashiWithDevice</a></div>
             </div>
             <div class="t-line-plain"><span class="t-prompt">$</span> <span class="cursor-blink">█</span></div>

@@ -208,9 +208,6 @@ function typeText(el, text, cb) {
 }
 
 /* ===== REVEAL ===== */
-document.querySelectorAll('section, .skill-card, .about-grid, .contact-wrap').forEach(function (el) {
-  el.classList.add('reveal');
-});
 var revObs = new IntersectionObserver(function (entries) {
   entries.forEach(function (e) {
     if (!e.isIntersecting) return;
@@ -222,12 +219,18 @@ var revObs = new IntersectionObserver(function (entries) {
     revObs.unobserve(e.target);
   });
 }, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el); });
+function revealEl(el) {
+  el.classList.add('reveal');
+  revObs.observe(el);
+}
+document.querySelectorAll('section, .about-grid, .contact-wrap').forEach(revealEl);
 
 /* ===== TIMELINE DRAG ===== */
 (function () {
   var outer = document.getElementById('timelineOuter');
   var thumb = document.getElementById('tlThumb');
+  var edgeL = document.getElementById('tlEdgeLeft');
+  var edgeR = document.getElementById('tlEdgeRight');
   if (!outer || !thumb) return;
   var dragging = false, startX, scrollStart;
 
@@ -236,7 +239,8 @@ document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el);
   document.addEventListener('mouseup',  function ()  { dragging = false; outer.classList.remove('grabbing'); });
   outer.addEventListener('touchstart', function (e) { startX = e.touches[0].pageX; scrollStart = outer.scrollLeft; }, { passive: true });
   outer.addEventListener('touchmove',  function (e) { outer.scrollLeft = scrollStart - (e.touches[0].pageX - startX) * 1.2; updateThumb(); }, { passive: true });
-  outer.addEventListener('scroll', updateThumb);
+  outer.addEventListener('scroll', function () { updateThumb(); updateEdges(); });
+  window.addEventListener('resize', function () { updateThumb(); updateEdges(); });
 
   function updateThumb() {
     var ratio = outer.scrollLeft / (outer.scrollWidth - outer.clientWidth);
@@ -244,7 +248,14 @@ document.querySelectorAll('.reveal').forEach(function (el) { revObs.observe(el);
     thumb.style.width = tw + 'px';
     thumb.style.left  = ratio * (outer.clientWidth - tw) + 'px';
   }
+
+  function updateEdges() {
+    if (edgeL) edgeL.classList.toggle('visible', outer.scrollLeft > 0);
+    if (edgeR) edgeR.classList.toggle('visible', outer.scrollLeft < outer.scrollWidth - outer.clientWidth - 1);
+  }
+
   updateThumb();
+  updateEdges();
 })();
 
 /* ===== NAV HIGHLIGHT ===== */
@@ -266,3 +277,112 @@ new IntersectionObserver(function (entries) {
     });
   }, { threshold: 0.4 }).observe(s);
 });
+
+/* ===== DATA (fetch data.json) ===== */
+function renderSkills(skills) {
+  var grid = document.getElementById('skillsGrid');
+  if (!grid || !skills) return;
+  grid.innerHTML = '';
+  skills.forEach(function (s) {
+    var card = document.createElement('div');
+    card.className = 'skill-card';
+    card.innerHTML =
+      '<div class="skill-top"><span class="skill-icon"></span>' +
+      '<span class="skill-name"></span><span class="skill-pct"></span></div>' +
+      '<div class="skill-bar"><div class="skill-fill"></div></div>';
+    card.querySelector('.skill-icon').textContent = s.icon;
+    card.querySelector('.skill-name').textContent = s.name;
+    card.querySelector('.skill-pct').textContent = s.pct + '%';
+    var fill = card.querySelector('.skill-fill');
+    fill.setAttribute('data-w', s.pct);
+    grid.appendChild(card);
+    revealEl(card);
+  });
+}
+
+function renderTimeline(tl) {
+  var track = document.getElementById('timelineTrack');
+  if (!track || !tl) return;
+  track.innerHTML = '';
+
+  var spacing = 200, startX = 80, nowGap = 240, padRight = 160;
+  var events = (tl.events || []);
+
+  var years = [];
+  var yearPos = {};
+  events.forEach(function (e, i) {
+    var x = startX + i * spacing;
+    var y = /^(\d{4})/.exec(e.date);
+    if (y && !(y[1] in yearPos)) { yearPos[y[1]] = x; years.push(y[1]); }
+  });
+
+  var lastX = startX + Math.max(0, events.length - 1) * spacing;
+  var nowX = lastX + nowGap;
+  track.style.width = (nowX + padRight) + 'px';
+
+  years.forEach(function (y) {
+    var marker = document.createElement('div');
+    marker.className = 'year-marker';
+    marker.style.setProperty('--x', (yearPos[y] - 20) + 'px');
+    marker.innerHTML = '<div class="year-label">' + y + '</div><div class="year-vline"></div>';
+    track.appendChild(marker);
+  });
+
+  var hline = document.createElement('div');
+  hline.className = 'tl-hline';
+  track.appendChild(hline);
+
+  events.forEach(function (e, i) {
+    var x = startX + i * spacing;
+    var bottom = i % 2 === 1;
+    var item = document.createElement('div');
+    item.className = 'tl-item ' + (bottom ? 'bottom' : 'top');
+    item.style.setProperty('--x', x + 'px');
+
+    var card = document.createElement('div');
+    card.className = 'tl-card';
+    card.innerHTML =
+      '<div class="tl-card-meta"><span class="tl-badge ' + e.badge + '">' + e.badgeLabel + '</span>' +
+      '<span class="tl-date">' + e.date + '</span></div>' +
+      '<div class="tl-card-title">' + e.title + '</div>' +
+      '<div class="tl-card-desc">' + e.desc + '</div>';
+
+    var connector = document.createElement('div');
+    connector.className = 'tl-connector';
+    var dot = document.createElement('div');
+    dot.className = 'tl-dot';
+    dot.innerHTML = '<div class="tl-dot-core"></div>';
+
+    if (bottom) { item.appendChild(dot); item.appendChild(connector); item.appendChild(card); }
+    else { item.appendChild(card); item.appendChild(connector); item.appendChild(dot); }
+    track.appendChild(item);
+  });
+
+  var now = document.createElement('div');
+  now.className = 'tl-now';
+  now.style.setProperty('--x', nowX + 'px');
+  now.innerHTML = '<div class="tl-now-label">NOW</div><div class="tl-now-line"></div>';
+  track.appendChild(now);
+
+  var outer = document.getElementById('timelineOuter');
+  if (outer) {
+    var target = nowX - outer.clientWidth / 2;
+    outer.scrollLeft = Math.max(0, Math.min(target, outer.scrollWidth - outer.clientWidth));
+    outer.dispatchEvent(new Event('scroll'));
+  }
+}
+
+(function loadData() {
+  fetch('data.json')
+    .then(function (res) {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      return res.json();
+    })
+    .then(function (data) {
+      renderSkills(data.skills);
+      renderTimeline(data.timeline);
+    })
+    .catch(function (err) {
+      console.error('Failed to load data.json:', err);
+    });
+})();

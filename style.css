@@ -239,6 +239,7 @@ section { min-height: 100vh; padding: 100px 5vw 60px; position: relative; z-inde
 #timeline { background: var(--bg2); }
 .timeline-hint { font-size: 0.72rem; color: var(--text-dim); letter-spacing: 2px; margin-bottom: 20px; text-align: center; }
 .hint-arrow { color: var(--accent2); }
+.timeline-shell { position: relative; }
 .timeline-outer { overflow-x: auto; overflow-y: visible; cursor: grab; position: relative; padding-bottom: 20px; scrollbar-width: none; }
 .timeline-outer::-webkit-scrollbar { display: none; }
 .timeline-outer.grabbing { cursor: grabbing; }
@@ -248,7 +249,7 @@ section { min-height: 100vh; padding: 100px 5vw 60px; position: relative; z-inde
 .year-label { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 3px; color: var(--accent2); padding: 4px 8px; border: 1px solid var(--border2); background: var(--bg2); margin-top: 8px; position: relative; z-index: 2; }
 .year-vline { flex: 1; width: 1px; background: linear-gradient(180deg, var(--border2) 0%, transparent 100%); }
 .tl-item { position: absolute; left: var(--x); width: 180px; display: flex; flex-direction: column; align-items: center; }
-.tl-item.top { bottom: 50%; flex-direction: column-reverse; }
+.tl-item.top { bottom: 50%; flex-direction: column; }
 .tl-item.bottom { top: 50%; flex-direction: column; }
 .tl-dot { width: 16px; height: 16px; flex-shrink: 0; border: 2px solid var(--accent); border-radius: 50%; background: var(--bg2); display: flex; align-items: center; justify-content: center; position: relative; z-index: 5; box-shadow: var(--glow-sm); transition: all 0.2s; }
 .tl-dot-core { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: var(--glow-sm); }
@@ -264,6 +265,7 @@ section { min-height: 100vh; padding: 100px 5vw 60px; position: relative; z-inde
 .tl-badge.contest { background: rgba(255,214,0,0.12); color: var(--yellow);  border: 1px solid rgba(255,214,0,0.3); }
 .tl-badge.event   { background: rgba(168,85,247,0.12); color: var(--purple); border: 1px solid rgba(168,85,247,0.3); }
 .tl-badge.school  { background: rgba(0,132,255,0.15); color: var(--accent2); border: 1px solid rgba(0,132,255,0.3); }
+.tl-badge.other   { background: rgba(255,68,68,0.12); color: var(--red); border: 1px solid rgba(255,68,68,0.3); }
 .tl-date { font-size: 0.65rem; color: var(--text-dim); margin-left: auto; }
 .tl-card-title { font-size: 0.78rem; color: var(--text); margin-bottom: 4px; line-height: 1.4; }
 .tl-card-desc { font-family: var(--font-jp); font-size: 0.7rem; color: var(--text-dim); line-height: 1.6; }
@@ -274,6 +276,14 @@ section { min-height: 100vh; padding: 100px 5vw 60px; position: relative; z-inde
 .tl-scrollbar { padding: 8px 0 0; }
 .tl-scrollbar-track { height: 3px; background: var(--border2); border-radius: 2px; position: relative; }
 .tl-scrollbar-thumb { height: 100%; position: absolute; left: 0; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 2px; box-shadow: var(--glow-sm); min-width: 40px; cursor: pointer; }
+.tl-edge { position: absolute; top: 0; bottom: 0; width: 56px; pointer-events: none; opacity: 0; transition: opacity 0.25s ease; z-index: 10; display: flex; align-items: center; justify-content: center; }
+.tl-edge span { font-size: 1.1rem; color: var(--accent2); text-shadow: var(--glow-sm); animation: hint-pulse 1.6s ease-in-out infinite; }
+.tl-edge.visible { opacity: 1; }
+.tl-edge-left { left: 0; background: linear-gradient(90deg, var(--bg2) 10%, transparent); }
+.tl-edge-right { right: 0; background: linear-gradient(-90deg, var(--bg2) 10%, transparent); }
+@keyframes hint-pulse { 0%,100% { transform: translateX(0); opacity: 0.55; } 50% { transform: translateX(3px); opacity: 1; } }
+.tl-edge-left span { animation-name: hint-pulse-l; }
+@keyframes hint-pulse-l { 0%,100% { transform: translateX(0); opacity: 0.55; } 50% { transform: translateX(-3px); opacity: 1; } }
 
 /* ===== CONTACT ===== */
 #contact { background: linear-gradient(180deg, var(--bg2) 0%, var(--bg) 100%); }
