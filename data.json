@@ -9,7 +9,8 @@
     { "icon": "🌐", "name": "Network Automation", "pct": 60 },
     { "icon": "🚢", "name": "Kubernetes", "pct": 85 },
     { "icon": "👾", "name": "Terraform", "pct": 55 },
-    { "icon": "🛣", "name": "Ansible", "pct": 70 }
+    { "icon": "🛣", "name": "Ansible", "pct": 70 },
+    { "icon": "🌪", "name": "Stackstorm", "pct": 40 }
   ],
   "timeline": {
     "events": [
@@ -30,7 +31,8 @@
       { "badge": "contest",   "badgeLabel": "CONTEST",   "date": "2026.04", "title": "情報危機管理コンテスト 参加", "desc": "セキュリティ分野の学習も継続的に行い、ネットワークエンジニアの業務に付随する予備知識を習得。" },
       { "badge": "event",   "badgeLabel": "EVENT",   "date": "2026.08", "title": "高校生ICT Conference 参加", "desc": "ファシリテーターとして参加。現在の高校生達の考えを学ぶ。" },
       { "badge": "contest",   "badgeLabel": "CONTEST",   "date": "2026.08", "title": "Cisco D-1グランプリ 応募", "desc": "既存サービスを活用して新たな価値を想像する、より実践的でレベルの高い環境を体感する。" },
-      { "badge": "contest",   "badgeLabel": "CONTEST",   "date": "2026.09", "title": "U22プログラミングコンテスト 応募", "desc": "幅広く統括的に構成管理を行うためのIaCツールを制作。" },
+      { "badge": "contest",   "badgeLabel": "CONTEST",   "date": "2026.08", "title": "U22プログラミングコンテスト 応募", "desc": "幅広く統括的に構成管理を行うためのIaCツールを制作。" },
+      { "badge": "event",   "badgeLabel": "EVENT",   "date": "2026.09", "title": "第1回LT会 主催", "desc": "学内の他学科の学生を含む、1~4年の全学年の学生が発表するLT会を開催し、企画から運営までを行いました。" },
       { "badge": "cert",    "badgeLabel": "CERT",    "date": "-now", "title": "Continuous Learning", "desc":"TOEICを教材として英語を学んだり、LPIC2、さらには就職後の受験を見据えてCCNPの学習を継続的に行っている。" },
       { "badge": "other",    "badgeLabel": "OTHER",    "date": "-now", "title": "Contributing", "desc":"OSSのコードリーディングや、バグ発見時の積極的なIssue報告を継続的に行っている。" }
     ]
